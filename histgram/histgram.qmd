@@ -1,0 +1,51 @@
+---
+title: "Make a Histogram with ggplot2"
+author: "Jeason"
+date: "10/30/2024"
+format: html
+editor: visual
+execute:
+  warning: false
+  message: false
+---
+
+
+```{r}
+library(tidyverse)
+library(primer.data)
+library(MetBrewer)
+```
+
+```{r}
+data(nobel)
+```
+
+```{r}
+ggplot(data = nobel) +
+  aes(x = year, fill = field) +
+  geom_histogram(color = "white")
+```
+
+
+```{r}
+ggplot(data = nobel) +
+  aes(x = year, fill = field) +
+  scale_fill_manual(values = c("red", "orange", "yellow", "green", "blue", "purple")) +
+geom_histogram(color = "white")
+```
+
+```{r}
+ggplot(data = nobel) +
+  aes(x = year, fill = field) +
+  scale_fill_manual(values = met.brewer("Signac", 6)) + 
+  geom_histogram(color = "white") +
+  labs(title = "Nobel prize laureate numbers have gone up in past 50 years",
+       subtitle = "Physics, Medicine, and Chemistry have largest numbers of laureates",
+       x = "Year",
+       y = "Number of laureates",
+       fill = "Field")
+```
+
+
+
+
